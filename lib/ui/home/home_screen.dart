@@ -25,7 +25,21 @@ class HomeScreen extends StatelessWidget {
             children: [
               Center(child: Image.asset('assets/logo.png', width: 147)),
               Text('Boas-vindas!'),
-              TextFormField(),
+              TextField(
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: 'O que você quer comer?',
+                  prefixIcon: Icon(Icons.search, color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: Colors.white70),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                ),
+              ),
               Text('Escolha por categoria'),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -45,8 +59,9 @@ class HomeScreen extends StatelessWidget {
               Text('Bem avaliados'),
               Column(
                 spacing: 16.0,
-                children: List.generate(restaurantData.listaRestaurant.length,
-                (index) {
+                children: List.generate(restaurantData.listaRestaurant.length, (
+                  index,
+                ) {
                   Restaurant restaurant = restaurantData.listaRestaurant[index];
                   return RestaurantWidget(restaurant: restaurant);
                 }),
